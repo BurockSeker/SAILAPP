@@ -13,13 +13,16 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "advisor_id")
-    @JsonIgnoreProperties({"students"})
+    //@JsonIgnoreProperties({"students"})
+    @JsonBackReference
     private Advisor advisor;
 
     private String name;
     private String surname;
     private String email;
     private String password;
+
+
 
     // Getters and Setters
 
@@ -77,6 +80,13 @@ public class Student {
     // Parameterized constructor
     public Student(Advisor advisor, String name, String surname, String email, String password) {
         this.advisor = advisor;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Student(String name, String surname, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;

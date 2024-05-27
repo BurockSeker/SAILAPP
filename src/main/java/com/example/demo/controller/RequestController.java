@@ -15,7 +15,7 @@ public class RequestController {
     @Autowired
     private RequestService requestService;
 
-    @PostMapping
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public Request createRequest(@RequestBody Request request) {
         return requestService.saveRequest(request);
     }
